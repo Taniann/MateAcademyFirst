@@ -8,7 +8,7 @@ import java.util.List;
  */
 public class Main {
     public static void main(String[] args) {
-        Test.NestedStatic nestedStatic = new Test.NestedStatic();
+/*        Test.NestedStatic nestedStatic = new Test.NestedStatic();
         Test.InnerNonStatic innerNonStatic = new Test().new InnerNonStatic();
         InterfaceA interfaceA = new InterfaceA() {
             @Override
@@ -21,18 +21,21 @@ public class Main {
                 System.out.println("anonim method2");
             }
         };
-/*        nestedStatic.someMethod1();
+*//*        nestedStatic.someMethod1();
         nestedStatic.someMethod2();
         innerNonStatic.someMethod1();
         innerNonStatic.someMethod2();
         interfaceA.someMethod1();
-        interfaceA.someMethod2();*/
+        interfaceA.someMethod2();*//*
 
         List<InterfaceA> list = new ArrayList<>();
         list.add(nestedStatic);
         list.add(innerNonStatic);
         list.add(interfaceA);
 
-        list.stream().map(element -> element.getClass().getName()).forEach(System.out::println);
+        list.stream().map(element -> element.getClass().getName()).forEach(System.out::println);*/
+        Test test = new Test();
+        Test.staticMethod();
+        System.out.println(Test.staticValue);
     }
 }

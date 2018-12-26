@@ -1,0 +1,6 @@
+first case: abstract class and two interfaces PlaySong and PlayAllSong
++ you can create player with type PlaySong, PlayAllSong and abstract class type
+- PlaySong interface is redundant
+
+second case: abstract class and interface PlayAllSong
++ more compact approach
