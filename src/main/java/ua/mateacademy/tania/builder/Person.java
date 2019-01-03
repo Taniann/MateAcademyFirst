@@ -16,7 +16,7 @@ public class Person {
 
     @Override
     public String toString() {
-        return "Person{" +
+        return "PersonImmutable{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", age=" + age +
