@@ -6,8 +6,8 @@ package ua.mateacademy.tania.lesson5.taskfruits;
 public enum FruitKind{
     APPLE("grenni"),
     PEAR("bera"),
-    ORANGE(""),
-    BANANA(""),
+    ORANGE("orange"),
+    BANANA("banana"),
     GRAPES("kysh-mysh");
 
     FruitKind(String name) {

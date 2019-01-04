@@ -3,6 +3,8 @@ package ua.mateacademy.tania.lesson5.taskfruits;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -12,9 +14,6 @@ import static java.time.temporal.ChronoUnit.DAYS;
  * Created by Tania Nebesna on 04.01.2019.
  */
 public class Shop {
-    private static final int DAYS_FOR_SALE = 7;
-    private static final BigDecimal MULTIPLIER_FOR_SALE = BigDecimal.valueOf(0.75);
-
     private List<Fruit> fruits = new ArrayList<>();
 
     public  List<Fruit> getFruits() {
@@ -22,7 +21,6 @@ public class Shop {
     }
 
     public void addFruit(Fruit fruit) {
-        if (!fruits.contains(fruit))
             fruits.add(fruit);
     }
 
@@ -60,11 +58,15 @@ public class Shop {
      * the price of fruit will be reduced by 25 percent
      * @param kinds
     */
-    public void makeSale(List<FruitKind> kinds) {
+    public List<Fruit> makeSale(List<FruitKind> kinds, int daysForSale, BigDecimal multiplierForSale) {
         LocalDate now = LocalDate.now();
-        fruits.stream().
-                filter(fruit -> kinds.contains(fruit.getKind()) && fruit.getExpirationDate() - DAYS.between(fruit.getDeliveryDate(), now) <= DAYS_FOR_SALE).
-                forEach(fruit -> fruit.setPrice(fruit.getPrice().multiply(MULTIPLIER_FOR_SALE)));
+        List<Fruit> result;
+        result = fruits.stream().
+                filter(fruit -> kinds.contains(fruit.getKind()) && fruit.getExpirationDate() - DAYS.between(fruit.getDeliveryDate(), now) <= daysForSale).
+                collect(Collectors.toList());
+
+        result.forEach(fruit -> fruit.setPrice(fruit.getPrice().multiply(multiplierForSale)));
+        return result;
     }
 }
 
