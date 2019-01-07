@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Stream;
 
 
 import static ua.mateacademy.tania.lesson6.tasklambda.FruitType.*;
@@ -56,6 +57,47 @@ public class MainLambdaTemplateStudents {
         };
 
         fruits.stream().sorted(fruitComparator).forEach(System.out::println);
+
+        System.out.println("____________________");
+        fruits.stream().mapToDouble(Fruit::getPrice).forEach(System.out::println);
+
+        System.out.println("____________________");
+        fruits.stream().flatMap(fruit -> Stream.of(fruit.getFruitType().toString().toCharArray()).peek(System.out::println)).toArray();
+
+        System.out.println("____________________");
+        fruits.stream().findFirst().ifPresent(System.out::println);
+
+        System.out.println("____________________");
+        fruits.stream().findAny().ifPresent(System.out::println);
+
+        System.out.println("____________________");
+        System.out.println(fruits.stream().filter(fruit -> fruit.getFruitType().equals(APPLE)).count());
+
+        System.out.println("____________________");
+        System.out.println(fruits.stream().anyMatch(fruit -> fruit.getFruitType().equals(APPLE)));
+
+        System.out.println("____________________");
+        System.out.println(fruits.stream().noneMatch(fruit -> fruit.getFruitType().equals(APPLE)));
+
+        System.out.println("____________________");
+        System.out.println(fruits.stream().allMatch(fruit -> fruit.getFruitType().equals(APPLE)));
+
+        System.out.println("____________________");
+        System.out.println(fruits.stream().min(Comparator.comparingInt(Fruit::getPrice)).get());
+
+        System.out.println("____________________");
+        System.out.println(fruits.stream().max(Comparator.comparingInt(Fruit::getPrice)).get());
+
+        System.out.println("____________________");
+        fruits.forEach(fruit -> fruit.setPrice(fruit.getPrice() + 10));
+        fruits.stream().forEachOrdered(System.out::println);
+
+        System.out.println("____________________");
+        Fruit[] array = fruits.stream().toArray(Fruit[]::new);
+        Arrays.stream(array).forEach(System.out::println);
+
+        System.out.println("____________________");
+        System.out.println(fruits.stream().mapToInt(Fruit::getPrice).reduce((p1, p2) -> p1 + p2).orElse(0));
     }
 
     private static List<Fruit> fillFruitsList() {
