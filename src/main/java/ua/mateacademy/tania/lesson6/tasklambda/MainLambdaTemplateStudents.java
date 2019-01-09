@@ -1,13 +1,13 @@
 package ua.mateacademy.tania.lesson6.tasklambda;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 
+import static java.util.stream.Collectors.*;
 import static ua.mateacademy.tania.lesson6.tasklambda.FruitType.*;
 import static ua.mateacademy.tania.lesson6.tasklambda.Vitamins.*;
 
@@ -98,17 +98,39 @@ public class MainLambdaTemplateStudents {
 
         System.out.println("____________________");
         System.out.println(fruits.stream().mapToInt(Fruit::getPrice).reduce((p1, p2) -> p1 + p2).orElse(0));
+
+        System.out.println("____________________");
+        System.out.println(fruits.stream().map(Fruit::getVitamins).distinct().collect(Collectors.toList()));
+
+        System.out.println("____________________");
+        System.out.println(fruits.stream().flatMap(fruit -> fruit.getVitamins().stream()).distinct().collect(Collectors.toList()));
+
+        Collection<LocalDate> localDates = fruits.stream().map(Fruit::getDeliveryDate).collect(toCollection(ArrayDeque::new));
+        System.out.println(localDates);
+
+        Map<Integer, Fruit> fruitMap = fruits.stream().collect(toMap(Fruit::getPrice, Function.identity(), (f1, f2) -> f1));
+
+        for(Map.Entry<Integer, Fruit> fruit : fruitMap.entrySet()) {
+            System.out.println(fruit.getKey() + " " + fruit.getValue());
+        }
+
+        System.out.println("____________________");
+        String str = fruits.stream().map(fruit -> fruit.getFruitType().toString()).distinct().
+                collect(joining(", ", "[", "]"));
+        System.out.println(str);
+
+        Map<FruitType, List<Fruit>> map = fruits.stream().collect(groupingBy(Fruit::getFruitType));
     }
 
     private static List<Fruit> fillFruitsList() {
         List<Fruit> fruits = new ArrayList<>();
 
         Fruit fruit = new Fruit(APPLE, 30, LocalDate.of(2019, 1, 4), 12, null);
-        fruit.setVitamins(Arrays.asList(new Vitamins[] { B, C }));
+        fruit.setVitamins(Arrays.asList(new Vitamins[] { B, C , C}));
         fruits.add(fruit);
 
         fruit = new Fruit(STRAWBERRY, 15, LocalDate.of(2019, 1, 2), 50, null);
-        fruit.setVitamins(Arrays.asList(new Vitamins[] { A, C }));
+        fruit.setVitamins(Arrays.asList(new Vitamins[] { A, C, A }));
         fruits.add(fruit);
 
         fruit = new Fruit(PEAR, 30, LocalDate.of(2019, 1, 4), 40, null);
