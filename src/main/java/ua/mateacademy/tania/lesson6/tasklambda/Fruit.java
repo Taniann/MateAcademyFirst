@@ -1,5 +1,6 @@
 package ua.mateacademy.tania.lesson6.tasklambda;
 
+import java.io.*;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -7,7 +8,7 @@ import java.util.List;
  * Created by Tania Nebesna on 05.01.2019.
  */
 
-public class Fruit {
+public class Fruit implements Serializable {
     private FruitType fruitType;
     private int dayToLive;
     private LocalDate deliveryDate;
@@ -111,5 +112,27 @@ public class Fruit {
             return false;
         return true;
     }
+
+    //3. Зробити методи в класі фрукт що вертають checkable|unchecable exceptions  і їх обробляти
+    // can be unchecable exceptions ArithmeticException if divider is 0
+    public int dividePrice(int divider) {
+        return this.price / divider;
+    }
+
+    //checked exceptions
+    public static void openSomeFile(String filename) {
+        try {
+            FileReader fileReader = new FileReader(filename);
+            int i;
+            while ((i = fileReader.read()) != -1) {
+                System.out.println(i);
+            }
+        } catch (FileNotFoundException e) {
+            System.out.println("Ooops.. file is not found (");;
+        } catch (IOException e) {
+            System.out.println("something goes wrong");;
+        }
+    }
+
 
 }
