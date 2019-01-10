@@ -1,5 +1,6 @@
 package ua.mateacademy.tania.lesson6.tasklambda;
 
+import java.io.*;
 import java.time.LocalDate;
 import java.util.*;
 import java.util.function.Function;
@@ -120,6 +121,30 @@ public class MainLambdaTemplateStudents {
         System.out.println(str);
 
         Map<FruitType, List<Fruit>> map = fruits.stream().collect(groupingBy(Fruit::getFruitType));
+
+        // 1. Зробити глибоке клонування List<Fruit> за допомогою сереалізації
+        System.out.println("____________________");
+        List<Fruit> fruitsClone = new ArrayList<>();
+        try {
+             fruitsClone = deepCloneFruits(fruits);
+
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        fruitsClone.stream().forEach(fruit -> fruit.setPrice(0));
+        fruitsClone.forEach(System.out::println);
+        System.out.println("____________________");
+        fruits.forEach(System.out::println);
+
+        //3. Зробити методи в класі фрукт що вертають checkable|unchecable exceptions  і їх обробляти
+        try {
+            fruits.get(0).dividePrice(0);
+        }catch (ArithmeticException ex) {
+            System.out.println("You`ve done uncorrect arithmetic operation!");
+        }
+
+        Fruit.openSomeFile("non-existence file");
     }
 
     private static List<Fruit> fillFruitsList() {
@@ -159,5 +184,23 @@ public class MainLambdaTemplateStudents {
 
         return fruits;
     }
+
+
+    // 1. Зробити глибоке клонування List<Fruit> за допомогою сереалізації
+    public static List<Fruit> deepCloneFruits(List<Fruit> fruits) throws IOException, ClassNotFoundException {
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        ObjectOutputStream ous = new ObjectOutputStream(baos);
+
+        ous.writeObject(fruits);
+        ous.close();
+
+        ByteArrayInputStream bais = new ByteArrayInputStream(baos.toByteArray());
+        ObjectInputStream ois = new ObjectInputStream(bais);
+
+        List<Fruit> result = (List<Fruit>) ois.readObject();
+
+        return result;
+    }
+
 
 }
