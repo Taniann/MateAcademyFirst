@@ -5,7 +5,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 /**
  * Created by Tania Nebesna on 14.01.2019.
  */
-public class Producer implements Runnable{
+public  class Producer implements Runnable{
     private TransferObject transferObject;
     private volatile boolean stopped;
     private static volatile AtomicInteger id = new AtomicInteger(0);
