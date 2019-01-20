@@ -16,7 +16,7 @@ public class Main {
         MyCallable callable2 = new MyCallable(commonResource, "callable-2");
         MyCallable callable3 = new MyCallable(commonResource, "callable-3");
 
-        ExecutorService executorService = Executors.newFixedThreadPool(1);
+        ExecutorService executorService = Executors.newFixedThreadPool(3);
         Future<CommonResource> future1 = executorService.submit(callable1);
         Future<CommonResource> future2 = executorService.submit(callable2);
         Future<CommonResource> future3 = executorService.submit(callable3);
