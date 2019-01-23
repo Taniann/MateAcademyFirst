@@ -1,0 +1,80 @@
+DEBUG | 2019-01-22 21:43:46 | [main] logger.Calculator	(Calculator.java:16) -- input values a=5, b=2
+INFO  | 2019-01-22 21:43:46 | [main] logger.Calculator	(Calculator.java:22) -- Method div return 2
+DEBUG | 2019-01-22 21:43:46 | [main] logger.Calculator	(Calculator.java:16) -- input values a=3, b=0
+ERROR | 2019-01-22 21:43:46 | [main] logger.Calculator	(Calculator.java:20) -- Exception when div working / by zero
+INFO  | 2019-01-22 21:43:46 | [main] logger.Calculator	(Calculator.java:22) -- Method div return -666
+DEBUG | 2019-01-22 21:55:37 | [main] logger.Calculator	(Calculator.java:16) -- input values a=5, b=2
+INFO  | 2019-01-22 21:55:37 | [main] logger.Calculator	(Calculator.java:22) -- Method div return 2
+DEBUG | 2019-01-22 21:55:37 | [main] logger.Calculator	(Calculator.java:16) -- input values a=3, b=0
+ERROR | 2019-01-22 21:55:37 | [main] logger.Calculator	(Calculator.java:20) -- Exception when div working / by zero
+INFO  | 2019-01-22 21:55:37 | [main] logger.Calculator	(Calculator.java:22) -- Method div return -666
+DEBUG | 2019-01-23 15:42:39 | [main] logger.Calculator	(Calculator.java:16) -- input values a=5, b=2
+INFO  | 2019-01-23 15:42:39 | [main] logger.Calculator	(Calculator.java:22) -- Method div return 2
+DEBUG | 2019-01-23 15:42:39 | [main] logger.Calculator	(Calculator.java:16) -- input values a=3, b=0
+ERROR | 2019-01-23 15:42:39 | [main] logger.Calculator	(Calculator.java:20) -- Exception when div working / by zero
+INFO  | 2019-01-23 15:42:39 | [main] logger.Calculator	(Calculator.java:22) -- Method div return -666
+DEBUG | 2019-01-23 16:12:29 | [main] logger.Calculator	(Calculator.java:16) -- input values a=5, b=2
+INFO  | 2019-01-23 16:12:29 | [main] logger.Calculator	(Calculator.java:22) -- Method div return 2
+DEBUG | 2019-01-23 16:12:29 | [main] logger.Calculator	(Calculator.java:16) -- input values a=3, b=0
+ERROR | 2019-01-23 16:12:29 | [main] logger.Calculator	(Calculator.java:20) -- Exception when div working / by zero
+INFO  | 2019-01-23 16:12:29 | [main] logger.Calculator	(Calculator.java:22) -- Method div return -666
+DEBUG | 2019-01-23 16:17:04 | [main] logger.Calculator	(Calculator.java:16) -- input values a=5, b=2
+INFO  | 2019-01-23 16:17:04 | [main] logger.Calculator	(Calculator.java:22) -- Method div return 2
+DEBUG | 2019-01-23 16:17:04 | [main] logger.Calculator	(Calculator.java:16) -- input values a=3, b=0
+ERROR | 2019-01-23 16:17:04 | [main] logger.Calculator	(Calculator.java:20) -- Exception when div working / by zero
+INFO  | 2019-01-23 16:17:04 | [main] logger.Calculator	(Calculator.java:22) -- Method div return -666
+DEBUG | 2019-01-23 16:22:04 | [main] logger.Calculator	(Calculator.java:16) -- input values a=5, b=2
+INFO  | 2019-01-23 16:22:04 | [main] logger.Calculator	(Calculator.java:22) -- Method div return 2
+DEBUG | 2019-01-23 16:22:04 | [main] logger.Calculator	(Calculator.java:16) -- input values a=3, b=0
+ERROR | 2019-01-23 16:22:04 | [main] logger.Calculator	(Calculator.java:20) -- Exception when div working / by zero
+INFO  | 2019-01-23 16:22:04 | [main] logger.Calculator	(Calculator.java:22) -- Method div return -666
+DEBUG | 2019-01-23 16:40:36 | [main] logger.Calculator	(Calculator.java:16) -- input values a=5, b=2
+INFO  | 2019-01-23 16:40:37 | [main] logger.Calculator	(Calculator.java:22) -- Method div return 2
+DEBUG | 2019-01-23 16:40:37 | [main] logger.Calculator	(Calculator.java:16) -- input values a=3, b=0
+ERROR | 2019-01-23 16:40:37 | [main] logger.Calculator	(Calculator.java:20) -- Exception when div working / by zero
+INFO  | 2019-01-23 16:40:37 | [main] logger.Calculator	(Calculator.java:22) -- Method div return -666
+DEBUG | 2019-01-23 16:46:03 | [main] logger.Calculator	(Calculator.java:16) -- input values a=5, b=2
+INFO  | 2019-01-23 16:46:03 | [main] logger.Calculator	(Calculator.java:22) -- Method div return 2
+DEBUG | 2019-01-23 16:46:03 | [main] logger.Calculator	(Calculator.java:16) -- input values a=3, b=0
+ERROR | 2019-01-23 16:46:03 | [main] logger.Calculator	(Calculator.java:20) -- Exception when div working / by zero
+INFO  | 2019-01-23 16:46:03 | [main] logger.Calculator	(Calculator.java:22) -- Method div return -666
+DEBUG | 2019-01-23 16:51:05 | [main] logger.Calculator	(Calculator.java:16) -- input values a=5, b=2
+INFO  | 2019-01-23 16:51:06 | [main] logger.Calculator	(Calculator.java:22) -- Method div return 2
+DEBUG | 2019-01-23 16:51:06 | [main] logger.Calculator	(Calculator.java:16) -- input values a=3, b=0
+ERROR | 2019-01-23 16:51:06 | [main] logger.Calculator	(Calculator.java:20) -- Exception when div working / by zero
+INFO  | 2019-01-23 16:51:06 | [main] logger.Calculator	(Calculator.java:22) -- Method div return -666
+DEBUG | 2019-01-23 16:51:50 | [main] logger.Calculator	(Calculator.java:16) -- input values a=5, b=2
+INFO  | 2019-01-23 16:51:50 | [main] logger.Calculator	(Calculator.java:22) -- Method div return 2
+DEBUG | 2019-01-23 16:51:50 | [main] logger.Calculator	(Calculator.java:16) -- input values a=3, b=0
+ERROR | 2019-01-23 16:51:50 | [main] logger.Calculator	(Calculator.java:20) -- Exception when div working / by zero
+INFO  | 2019-01-23 16:51:50 | [main] logger.Calculator	(Calculator.java:22) -- Method div return -666
+DEBUG | 2019-01-23 16:52:08 | [main] logger.Calculator	(Calculator.java:16) -- input values a=5, b=2
+INFO  | 2019-01-23 16:52:08 | [main] logger.Calculator	(Calculator.java:22) -- Method div return 2
+DEBUG | 2019-01-23 16:52:08 | [main] logger.Calculator	(Calculator.java:16) -- input values a=3, b=0
+ERROR | 2019-01-23 16:52:08 | [main] logger.Calculator	(Calculator.java:20) -- Exception when div working / by zero
+INFO  | 2019-01-23 16:52:08 | [main] logger.Calculator	(Calculator.java:22) -- Method div return -666
+DEBUG | 2019-01-23 16:58:54 | [main] logger.Calculator	(Calculator.java:16) -- input values a=5, b=2
+INFO  | 2019-01-23 16:58:54 | [main] logger.Calculator	(Calculator.java:22) -- Method div return 2
+DEBUG | 2019-01-23 16:58:54 | [main] logger.Calculator	(Calculator.java:16) -- input values a=3, b=0
+ERROR | 2019-01-23 16:58:54 | [main] logger.Calculator	(Calculator.java:20) -- Exception when div working / by zero
+INFO  | 2019-01-23 16:58:54 | [main] logger.Calculator	(Calculator.java:22) -- Method div return -666
+DEBUG | 2019-01-23 17:01:38 | [main] logger.Calculator	(Calculator.java:16) -- input values a=5, b=2
+INFO  | 2019-01-23 17:01:38 | [main] logger.Calculator	(Calculator.java:22) -- Method div return 2
+DEBUG | 2019-01-23 17:01:38 | [main] logger.Calculator	(Calculator.java:16) -- input values a=3, b=0
+ERROR | 2019-01-23 17:01:38 | [main] logger.Calculator	(Calculator.java:20) -- Exception when div working / by zero
+INFO  | 2019-01-23 17:01:38 | [main] logger.Calculator	(Calculator.java:22) -- Method div return -666
+DEBUG | 2019-01-23 17:03:20 | [main] logger.Calculator	(Calculator.java:16) -- input values a=5, b=2
+INFO  | 2019-01-23 17:03:20 | [main] logger.Calculator	(Calculator.java:22) -- Method div return 2
+DEBUG | 2019-01-23 17:03:20 | [main] logger.Calculator	(Calculator.java:16) -- input values a=3, b=0
+ERROR | 2019-01-23 17:03:20 | [main] logger.Calculator	(Calculator.java:20) -- Exception when div working / by zero
+INFO  | 2019-01-23 17:03:20 | [main] logger.Calculator	(Calculator.java:22) -- Method div return -666
+DEBUG | 2019-01-23 17:05:44 | [main] logger.Calculator	(Calculator.java:16) -- input values a=5, b=2
+INFO  | 2019-01-23 17:05:44 | [main] logger.Calculator	(Calculator.java:22) -- Method div return 2
+DEBUG | 2019-01-23 17:05:44 | [main] logger.Calculator	(Calculator.java:16) -- input values a=3, b=0
+ERROR | 2019-01-23 17:05:44 | [main] logger.Calculator	(Calculator.java:20) -- Exception when div working / by zero
+INFO  | 2019-01-23 17:05:44 | [main] logger.Calculator	(Calculator.java:22) -- Method div return -666
+DEBUG | 2019-01-23 17:25:05 | [main] logger.Calculator	(Calculator.java:16) -- input values a=5, b=2
+INFO  | 2019-01-23 17:25:05 | [main] logger.Calculator	(Calculator.java:22) -- Method div return 2
+DEBUG | 2019-01-23 17:25:05 | [main] logger.Calculator	(Calculator.java:16) -- input values a=3, b=0
+ERROR | 2019-01-23 17:25:05 | [main] logger.Calculator	(Calculator.java:20) -- Exception when div working / by zero
+INFO  | 2019-01-23 17:25:05 | [main] logger.Calculator	(Calculator.java:22) -- Method div return -666

@@ -63,8 +63,7 @@ public class FruitShop {
     public List<Fruit> reSetPricexRealization(int percent, int daysToChange, FruitType... fruitTypes) {
         List<FruitType> possibleTypes = Arrays.asList(fruitTypes);
         return getFruits().stream().filter(f -> possibleTypes.contains(f.getFruitType()))
-                .filter(f -> fruitIsValid(f, LocalDate.now(), daysToChange)).map(Fruit::clone)
-                .peek(f -> f.setPrice(f.getPrice() * percent / 100)).collect(Collectors.toList());
+                .filter(f -> fruitIsValid(f, LocalDate.now(), daysToChange)).map(Fruit::clone).
+                peek(f -> f.setPrice(f.getPrice() * percent / 100)).collect(Collectors.toList());
     }
-
 }
