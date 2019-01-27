@@ -99,18 +99,18 @@ public class FruitShopMockSpyTest {
 
     @Test
     public void testCheckByExpireDate() {
-        doReturn(Arrays.asList(strawberry)).when(fruitShop).checkByExpireDate(30);
+        doReturn(Arrays.asList(strawberry)).when(fruitShop).checkByExpireDate(1);
         List<Fruit> expected = Arrays.asList(strawberry);
-        List<Fruit> actual = fruitShop.checkByExpireDate(30);
+        List<Fruit> actual = fruitShop.checkByExpireDate(1);
         assertEquals(expected, actual);
     }
 
     @Test
     public void testAllFreshAndFruitType() {
-        doReturn(Arrays.asList(apple)).when(fruitShop).allFreshAndFruitType(APPLE,
+        doReturn(Arrays.asList(apple)).when(fruitShop).allFreshAndFruitType(ORANGE,
                 LocalDate.of(2019, Month.DECEMBER, 31));
         List<Fruit> expected = Arrays.asList(apple);
-        List<Fruit> actual = fruitShop.allFreshAndFruitType(APPLE,
+        List<Fruit> actual = fruitShop.allFreshAndFruitType(ORANGE,
                 LocalDate.of(2019, Month.DECEMBER, 31));
         assertEquals(expected, actual);
     }
