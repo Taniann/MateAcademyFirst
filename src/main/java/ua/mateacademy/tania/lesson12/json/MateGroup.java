@@ -15,8 +15,8 @@ import java.util.Set;
  * Created by Tania Nebesna on 24.01.2019.
  */
 @XmlRootElement(name = "MateGroup")
-@XmlAccessorType(XmlAccessType.FIELD)
-@JsonPropertyOrder({ "room", "teacher", "students", "humanResources" })
+@XmlType (propOrder={"id", "room", "teacher", "students", "laptops", "humanResources"})
+@JsonPropertyOrder({ "id", "room", "teacher", "students","laptops", "humanResources" })
 public class MateGroup implements Serializable {
 
     @XmlElement(type = Teacher.class)
@@ -29,6 +29,9 @@ public class MateGroup implements Serializable {
     private List<Person> students;
     @XmlElement(required = true, nillable = false)
     private Room room;
+    @XmlElementWrapper(name = "laptops")
+    @XmlElement(name = "laptop")
+    private List<Laptop> laptops;
     @XmlElementWrapper(name = "hrs")
     @XmlElement(name = "humanResource")
     private Set<HumanResource> humanResources;
@@ -77,6 +80,14 @@ public class MateGroup implements Serializable {
         this.humanResources = humanResources;
     }
 
+    public List<Laptop> getLaptops() {
+        return laptops;
+    }
+
+    public void setLaptops(List<Laptop> laptops) {
+        this.laptops = laptops;
+    }
+
     @Override
     public String toString() {
         return "MateGroup [teacher=" + teacher + ", students=" + students + ", room=" + room + ", humanResources="
@@ -111,6 +122,12 @@ public class MateGroup implements Serializable {
         students.add(new Student("Abram", "Kolom", 1998));
         students.add(new Teacher("Moisha", "Stefan", 1990, 666));
         mateGroup.setStudents(students);
+
+        List<Laptop> laptops = new ArrayList<>();
+        laptops.add(new Laptop("Dell", "Inspiron 15 3567", "USA"));
+        laptops.add(new Laptop("HP", "250 G6", "USA"));
+        mateGroup.setLaptops(laptops);
+
 
         return mateGroup;
     }
