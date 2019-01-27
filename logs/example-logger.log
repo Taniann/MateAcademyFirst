@@ -78,3 +78,8 @@ INFO  | 2019-01-23 17:25:05 | [main] logger.Calculator	(Calculator.java:22) -- M
 DEBUG | 2019-01-23 17:25:05 | [main] logger.Calculator	(Calculator.java:16) -- input values a=3, b=0
 ERROR | 2019-01-23 17:25:05 | [main] logger.Calculator	(Calculator.java:20) -- Exception when div working / by zero
 INFO  | 2019-01-23 17:25:05 | [main] logger.Calculator	(Calculator.java:22) -- Method div return -666
+2019-01-23 22:58:10 | DEBUG | [main] logger.Calculator:16 -- input values a=5, b=2
+2019-01-23 22:58:10 | INFO  | [main] logger.Calculator:22 -- Method div return 2
+2019-01-23 22:58:10 | DEBUG | [main] logger.Calculator:16 -- input values a=3, b=0
+2019-01-23 22:58:10 | ERROR | [main] logger.Calculator:20 -- Exception when div working / by zero
+2019-01-23 22:58:10 | INFO  | [main] logger.Calculator:22 -- Method div return -666
