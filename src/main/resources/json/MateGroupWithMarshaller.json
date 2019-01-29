@@ -1,0 +1,55 @@
+{
+   "id" : 18122018,
+   "room" : {
+      "city" : "Kiyv",
+      "street" : "Tarasivska",
+      "house" : 16,
+      "number" : 28
+   },
+   "teacher" : {
+      "type" : "teacher",
+      "surname" : "Pasko",
+      "yearOfBorn" : 1988,
+      "name" : "Serhii",
+      "salary" : 666
+   },
+   "students" : {
+      "student" : [ {
+         "type" : "student",
+         "name" : "Iza",
+         "yearOfBorn" : 1997
+      }, {
+         "type" : "student",
+         "name" : "Abram",
+         "yearOfBorn" : 1998
+      }, {
+         "type" : "teacher",
+         "surname" : "Stefan",
+         "yearOfBorn" : 1990,
+         "name" : "Moisha",
+         "salary" : 666
+      } ]
+   },
+   "laptops" : {
+      "laptop" : [ {
+         "firm" : "Dell",
+         "model" : "Inspiron 15 3567"
+      }, {
+         "firm" : "HP",
+         "model" : "250 G6"
+      } ]
+   },
+   "hrs" : {
+      "humanResource" : [ {
+         "name" : "Karmen",
+         "surname" : "",
+         "yearOfBorn" : 1990,
+         "startWorkYear" : 2015
+      }, {
+         "name" : "Efiria",
+         "surname" : "",
+         "yearOfBorn" : 1989,
+         "startWorkYear" : 2016
+      } ]
+   }
+}
