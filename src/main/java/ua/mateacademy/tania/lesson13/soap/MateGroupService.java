@@ -17,9 +17,13 @@ import static javax.jws.soap.SOAPBinding.Style.DOCUMENT;
 @SOAPBinding(style = DOCUMENT)
 public interface MateGroupService {
     @WebMethod
-    public MateGroup getMateGroup();
+    MateGroup getMateGroup();
 
     @WebMethod
-    public MateGroup addStudents(List<Person> persons);
+    MateGroup addStudents(List<Person> persons);
+
+    @WebMethod
+    MateGroup updateStudent(Person person);
+
 
 }

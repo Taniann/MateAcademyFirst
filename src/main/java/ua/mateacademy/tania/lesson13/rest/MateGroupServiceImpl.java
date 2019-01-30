@@ -10,9 +10,7 @@ import javax.ws.rs.core.Response;
 
 import java.util.Arrays;
 
-import static javax.ws.rs.core.Response.Status.ACCEPTED;
-import static javax.ws.rs.core.Response.Status.NOT_FOUND;
-import static javax.ws.rs.core.Response.Status.OK;
+import static javax.ws.rs.core.Response.Status.*;
 
 /**
  * Created by Tania Nebesna on 29.01.2019.
@@ -39,5 +37,24 @@ public class MateGroupServiceImpl implements MateGroupService{
             return Response.status(ACCEPTED).entity(mateGroup).type(MediaType.APPLICATION_JSON).build();
         }
         return Response.status(NOT_FOUND).build();
+    }
+
+    @Override
+    @PUT
+    @Path("/update")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response updateStudent(Person person) {
+        if (person == null) {
+            return Response.status(BAD_REQUEST).build();
+        }
+
+        for (Person student : mateGroup.getStudents()) {
+            if (student.equals(person)) {
+                student.update(person);
+            }
+        }
+        return Response.status(ACCEPTED).entity(mateGroup).type(MediaType.APPLICATION_JSON).build();
+
     }
 }

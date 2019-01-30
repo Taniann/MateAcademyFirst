@@ -21,7 +21,7 @@ public class MateGroupServiceClient {
 
         // 1st argument service URI, refer to wsdl document above
         // 2nd argument is service name, refer to wsdl document above
-        QName qname = new QName("http://lesson13.tania.mateacademy.ua/", "MateGroupServiceImplService");
+        QName qname = new QName("http://soap.lesson13.tania.mateacademy.ua/", "MateGroupServiceImplService");
 
         Service service = Service.create(url, qname);
 
@@ -30,8 +30,9 @@ public class MateGroupServiceClient {
         System.out.println(hello.getMateGroup());
 
         List<Person> persons = new ArrayList<>();
-        persons.add(new Student("First", "First", 1995));
-        persons.add(new Teacher("Second", "Second", 1990, 666));
+        persons.add(new Student(8,"First", "First", 1995));
+        persons.add(new Teacher(9,"Second", "Second", 1990, 666));
         System.out.println(hello.addStudents(persons));
+        System.out.println(hello.updateStudent(new Student(2, "Name", "Surname", 1990)));
     }
 }
