@@ -15,6 +15,7 @@ import java.util.Set;
  * Created by Tania Nebesna on 24.01.2019.
  */
 @XmlRootElement(name = "MateGroup")
+@XmlAccessorType(XmlAccessType.FIELD)
 @XmlType (propOrder={"id", "room", "teacher", "students", "laptops", "humanResources"})
 @JsonPropertyOrder({ "id", "room", "teacher", "students","laptops", "humanResources" })
 public class MateGroup implements Serializable {
