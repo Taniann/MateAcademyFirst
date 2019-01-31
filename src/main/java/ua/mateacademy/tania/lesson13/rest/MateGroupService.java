@@ -1,6 +1,7 @@
 package ua.mateacademy.tania.lesson13.rest;
 
 import ua.mateacademy.tania.lesson12.json.Person;
+import ua.mateacademy.tania.lesson12.json.Teacher;
 
 import javax.ws.rs.core.Response;
 
@@ -12,5 +13,7 @@ public interface MateGroupService {
 
     Response addStudent(int groupId, Person person);
 
-    Response updateStudent(Person person);
+    Response updateStudent(int groupId, Person person);
+
+    Response updateTeacher(int groupId, Teacher teacher);
 }
