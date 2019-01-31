@@ -10,8 +10,8 @@ public class HumanResource extends Person {
         super();
     }
 
-    public HumanResource(String name, String surname, int yearOfBorn, int startWorkYear) {
-        super(name, surname, yearOfBorn);
+    public HumanResource(Integer id, String name, String surname, int yearOfBorn, int startWorkYear) {
+        super(id, name, surname, yearOfBorn);
         this.startWorkYear = startWorkYear;
     }
 

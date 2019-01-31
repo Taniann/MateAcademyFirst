@@ -13,8 +13,6 @@ import javax.xml.bind.annotation.XmlTransient;
 public class Student extends Person {
 
     @Override
-    @XmlTransient
-    @JsonIgnore
     public String getSurname() {
         return super.getSurname();
     }
@@ -23,8 +21,7 @@ public class Student extends Person {
 
     }
 
-    public Student(String name, String surname, int yearOfBorn) {
-        super(name, surname, yearOfBorn);
+    public Student(Integer id, String name, String surname, int yearOfBorn) {
+        super(id, name, surname, yearOfBorn);
     }
-
 }

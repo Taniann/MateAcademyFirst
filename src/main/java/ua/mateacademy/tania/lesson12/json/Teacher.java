@@ -9,8 +9,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class Teacher extends Person {
     private int salary;
 
-    public Teacher(String name, String surname, int yearOfBorn, int salary) {
-        super(name, surname, yearOfBorn);
+    public Teacher(Integer id, String name, String surname, int yearOfBorn, int salary) {
+        super(id, name, surname, yearOfBorn);
         this.salary = salary;
     }
 

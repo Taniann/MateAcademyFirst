@@ -107,21 +107,21 @@ public class MateGroup implements Serializable {
         MateGroup mateGroup = new MateGroup();
         mateGroup.setId(18122018);
 
-        Teacher teacher = new Teacher("Serhii", "Pasko", 1988, 666);
+        Teacher teacher = new Teacher(4,"Serhii", "Pasko", 1988, 666);
         mateGroup.setTeacher(teacher);
 
         Room room = new Room("Kiyv", "Tarasivska", 16, 28);
         mateGroup.setRoom(room);
 
         Set<HumanResource> humanResources = new HashSet<>();
-        humanResources.add(new HumanResource("Karmen", "", 1990, 2015));
-        humanResources.add(new HumanResource("Efiria", "", 1989, 2016));
+        humanResources.add(new HumanResource(5,"Karmen", "", 1990, 2015));
+        humanResources.add(new HumanResource(6,"Efiria", "", 1989, 2016));
         mateGroup.setHumanResources(humanResources);
 
         List<Person> students = new ArrayList<>();
-        students.add(new Student("Iza", "Rabinovish", 1997));
-        students.add(new Student("Abram", "Kolom", 1998));
-        students.add(new Teacher("Moisha", "Stefan", 1990, 666));
+        students.add(new Student(1,"Iza", "Rabinovish", 1997));
+        students.add(new Student(2,"Abram", "Kolom", 1998));
+        students.add(new Teacher(3,"Moisha", "Stefan", 1990, 666));
         mateGroup.setStudents(students);
 
         List<Laptop> laptops = new ArrayList<>();

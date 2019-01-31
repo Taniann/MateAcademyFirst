@@ -2,6 +2,7 @@ package ua.mateacademy.tania.lesson13.soap;
 
 import ua.mateacademy.tania.lesson12.json.MateGroup;
 import ua.mateacademy.tania.lesson12.json.Person;
+import ua.mateacademy.tania.lesson12.json.Teacher;
 
 import javax.jws.WebMethod;
 import javax.jws.WebService;
@@ -17,9 +18,16 @@ import static javax.jws.soap.SOAPBinding.Style.DOCUMENT;
 @SOAPBinding(style = DOCUMENT)
 public interface MateGroupService {
     @WebMethod
-    public MateGroup getMateGroup();
+    MateGroup getMateGroup();
 
     @WebMethod
-    public MateGroup addStudents(List<Person> persons);
+    MateGroup addStudents(List<Person> persons);
+
+    @WebMethod
+    MateGroup updateStudent(Person person);
+
+    @WebMethod
+    MateGroup updateTeacher(Teacher teacher);
+
 
 }
