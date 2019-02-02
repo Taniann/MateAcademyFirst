@@ -1,5 +1,6 @@
 package ua.mateacademy.tania.lesson14.rest;
 
+import ua.mateacademy.tania.lesson12.json.HumanResource;
 import ua.mateacademy.tania.lesson12.json.Person;
 
 import javax.ws.rs.core.Response;
@@ -15,4 +16,15 @@ public interface MateGroupService {
     Response updateStudent(int groupId, String surname, String name);
 
     Response removeStudent(int groupId, String surname);
+
+    Response addHumanResource(int groupId, HumanResource humanResource);
+
+    Response removeHumanResourceById(int groupId, int humanResourceId);
+
+    Response editHRStartWorkYear(int groupId, int humanResourceId, int startWorkYear);
+
+    Response getAllHumanResource(int groupId);
+
+    Response getHumanResourceById(int groupId, int humanResourceId);
 }
+
