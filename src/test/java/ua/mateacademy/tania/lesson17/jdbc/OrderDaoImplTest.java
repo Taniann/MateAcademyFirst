@@ -4,6 +4,7 @@ import org.junit.Test;
 
 import java.math.BigDecimal;
 import java.sql.SQLException;
+import java.util.Set;
 
 import static org.junit.Assert.*;
 
@@ -25,5 +26,21 @@ public class OrderDaoImplTest {
     public void testFindOrderByIdNotPresent() throws SQLException {
         Order order = orderDao.findOrderById(NOT_EXIST_ORDER);
         assertNull(order);
+    }
+
+    @Test
+    public void testGetAllOrders() throws SQLException {
+        Set<Order> orders = orderDao.getAllOrders();
+        System.out.println(orders);
+        System.out.println(orders.size());
+        assertTrue(orders.size() > 25);
+    }
+
+    @Test
+    public void testGetAllOrdersWithJoinQuery() throws SQLException {
+        Set<Order> orders = orderDao.getAllOrdersWithJoinQuery();
+        System.out.println(orders);
+        System.out.println(orders.size());
+        assertTrue(orders.size() > 25);
     }
 }
