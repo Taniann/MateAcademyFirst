@@ -2,6 +2,7 @@ package ua.mateacademy.tania.lesson17.jdbc;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
+import java.util.Objects;
 
 /**
  * Created by Tania Nebesna on 13.02.2019.
@@ -84,5 +85,21 @@ public class Office {
                 ", target=" + target +
                 ", sale=" + sale +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Office office = (Office) o;
+        return Objects.equals(id, office.id) &&
+                Objects.equals(city, office.city) &&
+                Objects.equals(region, office.region);
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(id, city, region);
     }
 }
