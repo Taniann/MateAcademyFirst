@@ -2,6 +2,7 @@ package ua.mateacademy.tania.lesson17.jdbc;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.Objects;
 
 /**
  * Created by Tania Nebesna on 12.02.2019.
@@ -88,4 +89,22 @@ public class Order {
         return buffer.toString();
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Order order = (Order) o;
+        return Objects.equals(orderNum, order.orderNum) &&
+                Objects.equals(product, order.product) &&
+                Objects.equals(orderDate, order.orderDate) &&
+                Objects.equals(mfr, order.mfr) &&
+                Objects.equals(qty, order.qty) &&
+                Objects.equals(amount, order.amount);
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(orderNum, product, orderDate, mfr, qty, amount);
+    }
 }

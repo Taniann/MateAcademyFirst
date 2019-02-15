@@ -1,10 +1,7 @@
 package ua.mateacademy.tania.lesson17.jdbc;
 
 import java.math.BigDecimal;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
@@ -80,6 +77,7 @@ public class OrderDaoImpl implements OrderDao{
         PreparedStatement preparedStatement = connection.prepareStatement("SELECT* FROM orders WHERE order_num=?");
         preparedStatement.setBigDecimal(1, id);
         ResultSet rs = preparedStatement.executeQuery();
+        showMetaData(rs);
 
         Order order = null;
         if (rs.next()) {
@@ -96,16 +94,59 @@ public class OrderDaoImpl implements OrderDao{
 
     @Override
     public boolean insertOrder(Order order) throws SQLException {
-        return false;
+        Connection connection = ConnectionDB.getConnection();
+        PreparedStatement preparedStatement = connection.prepareStatement(
+                "INSERT INTO orders(order_Num, order_Date, mfr, qty, amount ) VALUES (?,?,?,?,?) ");
+
+        preparedStatement.setBigDecimal(1, order.getOrderNum());
+        preparedStatement.setDate(2, Date.valueOf(order.getOrderDate()));
+        preparedStatement.setString(3, order.getMfr());
+        preparedStatement.setBigDecimal(4, order.getQty());
+        preparedStatement.setBigDecimal(5, order.getAmount());
+
+        Boolean isRowInserted = preparedStatement.executeUpdate() > 0;
+        preparedStatement.close();
+        connection.close();
+        return isRowInserted;
     }
 
     @Override
     public boolean updateOrder(Order order) throws SQLException {
-        return false;
+        Connection connection = ConnectionDB.getConnection();
+        PreparedStatement preparedStatement = connection.prepareStatement(
+                "UPDATE orders SET amount = ? WHERE order_Num = ? ");
+        preparedStatement.setBigDecimal(1, order.getAmount());
+        preparedStatement.setBigDecimal(2, order.getOrderNum());
+
+        Boolean isRowUpdated = preparedStatement.executeUpdate() > 0;
+        preparedStatement.close();
+        connection.close();
+        return isRowUpdated;
     }
 
     @Override
     public boolean deleteOrder(BigDecimal id) throws SQLException {
-        return false;
+        Connection connection = ConnectionDB.getConnection();
+        PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM orders WHERE order_Num = ?");
+
+        preparedStatement.setBigDecimal(1, id);
+
+        Boolean isRowDeleted = preparedStatement.executeUpdate() > 0;
+        preparedStatement.close();
+        connection.close();
+        return isRowDeleted;
+    }
+
+    public void showMetaData(ResultSet resultSet) throws SQLException {
+        ResultSetMetaData resultSetMetaData = resultSet.getMetaData();
+        Integer countRow = resultSetMetaData.getColumnCount();
+
+        for (int i = 1; i <= countRow; i++) {
+            System.out.println("column name " + resultSetMetaData.getColumnName(i));
+            System.out.println("column class name " + resultSetMetaData.getColumnClassName(i));
+            System.out.println("column type " + resultSetMetaData.getColumnType(i));
+            System.out.println("column type name " + resultSetMetaData.getColumnTypeName(i));
+            System.out.println("table name " + resultSetMetaData.getTableName(i));
+        }
     }
 }

@@ -37,11 +37,14 @@ public class Main {
         } finally {
             fileReader.close();
         }*/
-      Path path = Paths.get("src/main/resources/input.txt");
+/*      Path path = Paths.get("src/main/resources/input.txt");
       List<String> stringList = Files.lines(path).map(String::toUpperCase).map(str -> str.replaceAll("J", "!!!")).collect(Collectors.toList());
 
       Path outputPath = Paths.get("src/main/resources/output.txt");
-      Files.write(outputPath,  stringList);
+      Files.write(outputPath,  stringList);*/
+
+        String str = null;
+        System.out.println(str);
 
     }
 }

@@ -19,7 +19,7 @@ public class OfficeDaoImpl implements OfficeDao {
         Set<Office> offices = new HashSet<>();
         try (Connection connection = ConnectionDB.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement("SELECT* FROM offices");
-             ResultSet rs = preparedStatement.executeQuery();
+             ResultSet rs = preparedStatement.executeQuery()
         ) {
 
             while (rs.next()) {
