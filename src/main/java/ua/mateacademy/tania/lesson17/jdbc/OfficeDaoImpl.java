@@ -44,65 +44,94 @@ public class OfficeDaoImpl implements OfficeDao {
 
     @Override
     public Office getById(BigInteger id) throws SQLException {
-        Connection connection = ConnectionDB.getConnection();
-        PreparedStatement preparedStatement = connection.prepareStatement("SELECT* FROM offices WHERE office=?");
-        preparedStatement.setBigDecimal(1, new BigDecimal(id));
-        ResultSet rs = preparedStatement.executeQuery();
-
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet rs = null;
         Office office = null;
-        if (rs.next()) {
-            office = extraxtFromResultSet(rs);
+
+        try {
+            connection = ConnectionDB.getConnection();
+            preparedStatement = connection.prepareStatement("SELECT* FROM offices WHERE office=?");
+            preparedStatement.setBigDecimal(1, new BigDecimal(id));
+            rs = preparedStatement.executeQuery();
+
+            if (rs.next()) {
+                office = extraxtFromResultSet(rs);
+            }
+        } finally {
+            rs.close();
+            preparedStatement.close();
+            connection.close();
         }
 
-        rs.close();
-        preparedStatement.close();
-        connection.close();
         return office;
     }
 
     @Override
     public boolean insert(Office office) throws SQLException {
-        Connection connection = ConnectionDB.getConnection();
-        PreparedStatement preparedStatement = connection.prepareStatement(
-                "INSERT INTO offices (office, city, region, mgr, target, sales ) VALUES (?,?,?,?,?,?) ");
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        Boolean isRowInserted;
 
-        preparedStatement.setBigDecimal(1, new BigDecimal(office.getId()));
-        preparedStatement.setString(2, office.getCity());
-        preparedStatement.setString(3, office.getRegion());
-        preparedStatement.setBigDecimal(4, new BigDecimal(office.getMgr()));
-        preparedStatement.setBigDecimal(5, office.getTarget());
-        preparedStatement.setBigDecimal(6, office.getSale());
+        try {
+            connection = ConnectionDB.getConnection();
+            preparedStatement = connection.prepareStatement(
+                    "INSERT INTO offices (office, city, region, mgr, target, sales ) VALUES (?,?,?,?,?,?) ");
 
-        Boolean isRowInserted = preparedStatement.executeUpdate() > 0;
-        preparedStatement.close();
-        connection.close();
+            preparedStatement.setBigDecimal(1, new BigDecimal(office.getId()));
+            preparedStatement.setString(2, office.getCity());
+            preparedStatement.setString(3, office.getRegion());
+            preparedStatement.setBigDecimal(4, new BigDecimal(office.getMgr()));
+            preparedStatement.setBigDecimal(5, office.getTarget());
+            preparedStatement.setBigDecimal(6, office.getSale());
+
+            isRowInserted = preparedStatement.executeUpdate() > 0;
+        } finally {
+            preparedStatement.close();
+            connection.close();
+        }
         return isRowInserted;
     }
 
     @Override
     public boolean update(Office office) throws SQLException {
-        Connection connection = ConnectionDB.getConnection();
-        PreparedStatement preparedStatement = connection.prepareStatement(
-                "UPDATE offices SET sales = ? WHERE office = ? ");
-        preparedStatement.setBigDecimal(1, office.getSale());
-        preparedStatement.setBigDecimal(2, new BigDecimal(office.getId()));
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        Boolean isRowUpdated;
 
-        Boolean isRowUpdated = preparedStatement.executeUpdate() > 0;
-        preparedStatement.close();
-        connection.close();
+        try {
+            connection = ConnectionDB.getConnection();
+            preparedStatement = connection.prepareStatement(
+                    "UPDATE offices SET sales = ? WHERE office = ? ");
+            preparedStatement.setBigDecimal(1, office.getSale());
+            preparedStatement.setBigDecimal(2, new BigDecimal(office.getId()));
+
+            isRowUpdated = preparedStatement.executeUpdate() > 0;
+        } finally {
+            preparedStatement.close();
+            connection.close();
+        }
         return isRowUpdated;
     }
 
     @Override
     public boolean delete(BigInteger id) throws SQLException {
-        Connection connection = ConnectionDB.getConnection();
-        PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM offices WHERE office = ?");
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        Boolean isRowDeleted;
 
-        preparedStatement.setBigDecimal(1, new BigDecimal(id));
+        try {
+            connection = ConnectionDB.getConnection();
+            preparedStatement = connection.prepareStatement("DELETE FROM offices WHERE office = ?");
 
-        Boolean isRowDeleted = preparedStatement.executeUpdate() > 0;
-        preparedStatement.close();
-        connection.close();
+            preparedStatement.setBigDecimal(1, new BigDecimal(id));
+
+            isRowDeleted = preparedStatement.executeUpdate() > 0;
+        } finally {
+            preparedStatement.close();
+            connection.close();
+        }
+
         return isRowDeleted;
     }
 
