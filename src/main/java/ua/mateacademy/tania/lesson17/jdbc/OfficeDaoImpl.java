@@ -2,10 +2,7 @@ package ua.mateacademy.tania.lesson17.jdbc;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -43,6 +40,99 @@ public class OfficeDaoImpl implements OfficeDao {
             }
         }
         return offices;
+    }
+
+    @Override
+    public Office getById(BigInteger id) throws SQLException {
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet rs = null;
+        Office office = null;
+
+        try {
+            connection = ConnectionDB.getConnection();
+            preparedStatement = connection.prepareStatement("SELECT* FROM offices WHERE office=?");
+            preparedStatement.setBigDecimal(1, new BigDecimal(id));
+            rs = preparedStatement.executeQuery();
+
+            if (rs.next()) {
+                office = extraxtFromResultSet(rs);
+            }
+        } finally {
+            rs.close();
+            preparedStatement.close();
+            connection.close();
+        }
+
+        return office;
+    }
+
+    @Override
+    public boolean insert(Office office) throws SQLException {
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        Boolean isRowInserted;
+
+        try {
+            connection = ConnectionDB.getConnection();
+            preparedStatement = connection.prepareStatement(
+                    "INSERT INTO offices (office, city, region, mgr, target, sales ) VALUES (?,?,?,?,?,?) ");
+
+            preparedStatement.setBigDecimal(1, new BigDecimal(office.getId()));
+            preparedStatement.setString(2, office.getCity());
+            preparedStatement.setString(3, office.getRegion());
+            preparedStatement.setBigDecimal(4, new BigDecimal(office.getMgr()));
+            preparedStatement.setBigDecimal(5, office.getTarget());
+            preparedStatement.setBigDecimal(6, office.getSale());
+
+            isRowInserted = preparedStatement.executeUpdate() > 0;
+        } finally {
+            preparedStatement.close();
+            connection.close();
+        }
+        return isRowInserted;
+    }
+
+    @Override
+    public boolean update(Office office) throws SQLException {
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        Boolean isRowUpdated;
+
+        try {
+            connection = ConnectionDB.getConnection();
+            preparedStatement = connection.prepareStatement(
+                    "UPDATE offices SET sales = ? WHERE office = ? ");
+            preparedStatement.setBigDecimal(1, office.getSale());
+            preparedStatement.setBigDecimal(2, new BigDecimal(office.getId()));
+
+            isRowUpdated = preparedStatement.executeUpdate() > 0;
+        } finally {
+            preparedStatement.close();
+            connection.close();
+        }
+        return isRowUpdated;
+    }
+
+    @Override
+    public boolean delete(BigInteger id) throws SQLException {
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        Boolean isRowDeleted;
+
+        try {
+            connection = ConnectionDB.getConnection();
+            preparedStatement = connection.prepareStatement("DELETE FROM offices WHERE office = ?");
+
+            preparedStatement.setBigDecimal(1, new BigDecimal(id));
+
+            isRowDeleted = preparedStatement.executeUpdate() > 0;
+        } finally {
+            preparedStatement.close();
+            connection.close();
+        }
+
+        return isRowDeleted;
     }
 
     private Office extraxtFromResultSet(ResultSet rs) throws SQLException {
