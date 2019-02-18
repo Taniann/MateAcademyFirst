@@ -69,7 +69,7 @@ public class OrderDaoImplTest {
 
     @Test
     public void test3DeleteOrder() throws SQLException {
-        orderDao.deleteOrder(BigDecimal.valueOf(121212));
+        orderDao.deleteOrder(order);
         Set<Order> orders = orderDao.getAllOrders();
         assertFalse(orders.contains(order));
     }

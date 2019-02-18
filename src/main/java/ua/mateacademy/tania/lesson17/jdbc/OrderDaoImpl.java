@@ -11,7 +11,6 @@ import java.util.Set;
  */
 public class OrderDaoImpl implements OrderDao{
 
-
     @Override
     public Set<Order> getAllOrders() throws SQLException {
         Set<Order> orders = new HashSet<>();
@@ -94,47 +93,41 @@ public class OrderDaoImpl implements OrderDao{
 
     @Override
     public boolean insertOrder(Order order) throws SQLException {
-        Connection connection = ConnectionDB.getConnection();
-        PreparedStatement preparedStatement = connection.prepareStatement(
-                "INSERT INTO orders(order_Num, order_Date, mfr, qty, amount ) VALUES (?,?,?,?,?) ");
+        CRUDTemplate<Order> crudTemplate = (ord, connection) -> {
+            PreparedStatement preparedStatement = connection.prepareStatement(
+                    "INSERT INTO orders(order_Num, order_Date, mfr, qty, amount ) VALUES (?,?,?,?,?) ");
 
-        preparedStatement.setBigDecimal(1, order.getOrderNum());
-        preparedStatement.setDate(2, Date.valueOf(order.getOrderDate()));
-        preparedStatement.setString(3, order.getMfr());
-        preparedStatement.setBigDecimal(4, order.getQty());
-        preparedStatement.setBigDecimal(5, order.getAmount());
-
-        Boolean isRowInserted = preparedStatement.executeUpdate() > 0;
-        preparedStatement.close();
-        connection.close();
-        return isRowInserted;
+            preparedStatement.setBigDecimal(1, order.getOrderNum());
+            preparedStatement.setDate(2, Date.valueOf(order.getOrderDate()));
+            preparedStatement.setString(3, order.getMfr());
+            preparedStatement.setBigDecimal(4, order.getQty());
+            preparedStatement.setBigDecimal(5, order.getAmount());
+            return preparedStatement;
+        };
+        return crudTemplate.templateOperation(order);
     }
 
     @Override
     public boolean updateOrder(Order order) throws SQLException {
-        Connection connection = ConnectionDB.getConnection();
-        PreparedStatement preparedStatement = connection.prepareStatement(
-                "UPDATE orders SET amount = ? WHERE order_Num = ? ");
-        preparedStatement.setBigDecimal(1, order.getAmount());
-        preparedStatement.setBigDecimal(2, order.getOrderNum());
-
-        Boolean isRowUpdated = preparedStatement.executeUpdate() > 0;
-        preparedStatement.close();
-        connection.close();
-        return isRowUpdated;
+        CRUDTemplate<Order> crudTemplate = (ord, connection) -> {
+            PreparedStatement preparedStatement = connection.prepareStatement(
+                    "UPDATE orders SET amount = ? WHERE order_Num = ? ");
+            preparedStatement.setBigDecimal(1, order.getAmount());
+            preparedStatement.setBigDecimal(2, order.getOrderNum());
+            return preparedStatement;
+        };
+        return crudTemplate.templateOperation(order);
     }
 
     @Override
-    public boolean deleteOrder(BigDecimal id) throws SQLException {
-        Connection connection = ConnectionDB.getConnection();
-        PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM orders WHERE order_Num = ?");
+    public boolean deleteOrder(Order order) throws SQLException {
+        CRUDTemplate<Order> crudTemplate = (ord, connection) -> {
+            PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM orders WHERE order_Num = ?");
 
-        preparedStatement.setBigDecimal(1, id);
-
-        Boolean isRowDeleted = preparedStatement.executeUpdate() > 0;
-        preparedStatement.close();
-        connection.close();
-        return isRowDeleted;
+            preparedStatement.setBigDecimal(1, order.getOrderNum());
+            return preparedStatement;
+        };
+        return crudTemplate.templateOperation(order);
     }
 
     public void showMetaData(ResultSet resultSet) throws SQLException {
