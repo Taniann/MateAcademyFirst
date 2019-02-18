@@ -4,9 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-@FunctionalInterface
-public interface  CRUDTemplate<T> {
-    default boolean templateOperation(T t) throws SQLException {
+public abstract class CRUDTemplateAbstract<T> {
+    public boolean templateOperation(T t) throws SQLException {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
         Boolean isDone;
@@ -22,5 +21,5 @@ public interface  CRUDTemplate<T> {
         return isDone;
     }
 
-    PreparedStatement returnPreparedStatement(T t, Connection connection) throws SQLException;
+    public abstract PreparedStatement returnPreparedStatement(T t, Connection connection) throws SQLException;
 }

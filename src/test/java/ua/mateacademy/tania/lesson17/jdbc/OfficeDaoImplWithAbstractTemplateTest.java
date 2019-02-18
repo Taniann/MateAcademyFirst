@@ -11,17 +11,14 @@ import java.util.Set;
 
 import static org.junit.Assert.*;
 
-/**
- * Created by Tania Nebesna on 13.02.2019.
- */
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class OfficeDaoImplTest {
+public class OfficeDaoImplWithAbstractTemplateTest {
     private static final BigInteger NOT_EXIST_OFFICE = BigInteger.valueOf(26);
     private static final BigInteger ALREADY_EXIST_OFFICE = BigInteger.valueOf(21);
     private static final Office office = new Office(BigInteger.valueOf(25), "киев", "region",
             BigInteger.valueOf(110), BigDecimal.valueOf(500), BigDecimal.valueOf(1000));
 
-    private OfficeDao officeDao = new OfficeDaoImpl();
+    private OfficeDao officeDao = new OfficeDaoImplWithAbstractTemplate();
 
     @Test
     public void testGetAll() throws SQLException {
