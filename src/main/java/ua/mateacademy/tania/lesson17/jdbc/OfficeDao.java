@@ -18,5 +18,5 @@ public interface OfficeDao {
 
     boolean update(Office office) throws SQLException;
 
-    boolean delete(BigInteger id) throws SQLException;
+    boolean delete(Office office) throws SQLException;
 }

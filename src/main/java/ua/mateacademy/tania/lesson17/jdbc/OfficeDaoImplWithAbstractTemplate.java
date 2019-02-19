@@ -2,14 +2,14 @@ package ua.mateacademy.tania.lesson17.jdbc;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.HashSet;
 import java.util.Set;
 
-/**
- * Created by Tania Nebesna on 13.02.2019.
- */
-public class OfficeDaoImpl implements OfficeDao {
+public class OfficeDaoImplWithAbstractTemplate implements OfficeDao {
 
     @Override
     public Set<Office> getAll() throws SQLException {
@@ -69,42 +69,47 @@ public class OfficeDaoImpl implements OfficeDao {
 
     @Override
     public boolean insert(Office office) throws SQLException {
-        CRUDTemplate<Office> crudTemplate = (offic, connection) -> {
-            PreparedStatement preparedStatement = connection.prepareStatement(
-                    "INSERT INTO offices (office, city, region, mgr, target, sales ) VALUES (?,?,?,?,?,?) ");
-
-            preparedStatement.setBigDecimal(1, new BigDecimal(office.getId()));
-            preparedStatement.setString(2, office.getCity());
-            preparedStatement.setString(3, office.getRegion());
-            preparedStatement.setBigDecimal(4, new BigDecimal(office.getMgr()));
-            preparedStatement.setBigDecimal(5, office.getTarget());
-            preparedStatement.setBigDecimal(6, office.getSale());
-            return preparedStatement;
-        };
-        return crudTemplate.templateOperation(office);
+        return new CRUDTemplateAbstract<Office>() {
+            @Override
+            public PreparedStatement returnPreparedStatement(Office office, Connection connection) throws SQLException {
+                PreparedStatement preparedStatement = connection.prepareStatement(
+                        "INSERT INTO offices (office, city, region, mgr, target, sales ) VALUES (?,?,?,?,?,?) ");
+                preparedStatement.setBigDecimal(1, new BigDecimal(office.getId()));
+                preparedStatement.setString(2, office.getCity());
+                preparedStatement.setString(3, office.getRegion());
+                preparedStatement.setBigDecimal(4, new BigDecimal(office.getMgr()));
+                preparedStatement.setBigDecimal(5, office.getTarget());
+                preparedStatement.setBigDecimal(6, office.getSale());
+                return preparedStatement;
+            }
+        }.templateOperation(office);
     }
 
     @Override
     public boolean update(Office office) throws SQLException {
-        CRUDTemplate<Office> crudTemplate = (offic, connection) -> {
-            PreparedStatement preparedStatement = connection.prepareStatement(
-                    "UPDATE offices SET sales = ? WHERE office = ? ");
-            preparedStatement.setBigDecimal(1, office.getSale());
-            preparedStatement.setBigDecimal(2, new BigDecimal(office.getId()));
-            return preparedStatement;
-        };
-        return crudTemplate.templateOperation(office);
+        return new CRUDTemplateAbstract<Office>() {
+            @Override
+            public PreparedStatement returnPreparedStatement(Office office, Connection connection) throws SQLException {
+                PreparedStatement preparedStatement = connection.prepareStatement(
+                        "UPDATE offices SET sales = ? WHERE office = ? ");
+                preparedStatement.setBigDecimal(1, office.getSale());
+                preparedStatement.setBigDecimal(2, new BigDecimal(office.getId()));
+                return preparedStatement;
+            }
+        }.templateOperation(office);
     }
 
     @Override
     public boolean delete(Office office) throws SQLException {
-        CRUDTemplate<Office> crudTemplate = (offic, connection) -> {
-            PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM offices WHERE office = ?");
+        return new CRUDTemplate<Office>() {
+            @Override
+            public PreparedStatement returnPreparedStatement(Office office, Connection connection) throws SQLException {
+                PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM offices WHERE office = ?");
 
-            preparedStatement.setBigDecimal(1, new BigDecimal(office.getId()));
-            return preparedStatement;
-        };
-        return crudTemplate.templateOperation(office);
+                preparedStatement.setBigDecimal(1, new BigDecimal(office.getId()));
+                return preparedStatement;
+            }
+        }.templateOperation(office);
     }
 
     private Office extraxtFromResultSet(ResultSet rs) throws SQLException {
