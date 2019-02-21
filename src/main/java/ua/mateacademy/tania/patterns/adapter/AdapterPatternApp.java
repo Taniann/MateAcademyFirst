@@ -6,6 +6,6 @@ package ua.mateacademy.tania.patterns.adapter;
 public class AdapterPatternApp {
     public static void main(String[] args) {
         DVIConnector dviConnector = new DVIConnectorAdapterToSVGA();
-        dviConnector.connectDVI();
+        dviConnector.connectDVI(); // output: Connect to SVGA
     }
 }

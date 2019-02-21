@@ -1,10 +1,8 @@
 package ua.mateacademy.tania.patterns.abstractfactory;
 
-import ua.mateacademy.tania.patterns.abstractfactory.polish.PolishFactory;
-
 public class AbstractFactoryApp {
     public static void main(String[] args) {
-        Factory factory = new PolishFactory();
+        Factory factory = FactoryProvider.getFactory("Polish");
 
         Product product = factory.createProduct();
         Instruction instruction = factory.createInstruction();
