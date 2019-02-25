@@ -16,29 +16,29 @@ public class OrderDaoImpl implements OrderDao{
         Set<Order> orders = new HashSet<>();
         try(Connection connection = ConnectionDB.getConnection();
             PreparedStatement preparedStatement1 = connection.prepareStatement("SELECT* FROM orders");
-            ResultSet rsOrder = preparedStatement1.executeQuery();
+            ResultSet rsOrder = preparedStatement1.executeQuery()
         ) {
 
             while(rsOrder.next()) {
                 BigDecimal orderNum = rsOrder.getBigDecimal("order_Num");
                 LocalDate orderDate = rsOrder.getDate("order_Date").toLocalDate();
-                String mfr = rsOrder.getString("mfr");
+                java.lang.String mfr = rsOrder.getString("mfr");
                 BigDecimal qty = rsOrder.getBigDecimal("qty");
                 BigDecimal amount = rsOrder.getBigDecimal("amount");
 
                 PreparedStatement preparedStatement2 = connection.prepareStatement("SELECT* FROM products WHERE product_id = ?");
-                preparedStatement2.setString(1,rsOrder.getString("product"));
+                preparedStatement2.setString(1,rsOrder.getString("string"));
                 ResultSet rsProduct = preparedStatement2.executeQuery();
 
-                Product product = null;
+                Product string = null;
 
                 if(rsProduct.next()) {
-                    product = new Product(rsProduct.getString("product_Id"), rsProduct.getString("mfr_Id"),
+                    string = new Product(rsProduct.getString("product_Id"), rsProduct.getString("mfr_Id"),
                             rsProduct.getString("description"), rsProduct.getBigDecimal("price"),
                             rsProduct.getBigDecimal("qty_On_Hand"));
                 }
 
-                Order order = new Order(orderNum, product, orderDate, mfr, qty, amount);
+                Order order = new Order(orderNum, string, orderDate, mfr, qty, amount);
                 orders.add(order);
             }
         }
@@ -56,14 +56,14 @@ public class OrderDaoImpl implements OrderDao{
             while(rs.next()) {
                 BigDecimal orderNum = rs.getBigDecimal("order_Num");
                 LocalDate orderDate = rs.getDate("order_Date").toLocalDate();
-                String mfr = rs.getString("mfr");
+                java.lang.String mfr = rs.getString("mfr");
                 BigDecimal qty = rs.getBigDecimal("qty");
                 BigDecimal amount = rs.getBigDecimal("amount");
-                Product product = new Product(rs.getString("product_Id"), rs.getString("mfr_Id"),
+                Product string = new Product(rs.getString("product_Id"), rs.getString("mfr_Id"),
                         rs.getString("description"), rs.getBigDecimal("price"),
                         rs.getBigDecimal("qty_On_Hand"));
 
-                Order order = new Order(orderNum, product, orderDate, mfr, qty, amount);
+                Order order = new Order(orderNum, string, orderDate, mfr, qty, amount);
                 orders.add(order);
             }
         }

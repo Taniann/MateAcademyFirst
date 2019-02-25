@@ -2,9 +2,6 @@ package ua.mateacademy.tania.lesson17.jdbc;
 
 import java.math.BigDecimal;
 
-/**
- * Created by Tania Nebesna on 12.02.2019.
- */
 public class Product  implements java.io.Serializable {
     private String productId;
     private String mfrId;

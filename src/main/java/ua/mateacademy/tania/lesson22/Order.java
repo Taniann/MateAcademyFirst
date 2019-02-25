@@ -1,32 +1,40 @@
-package ua.mateacademy.tania.lesson17.jdbc;
+package ua.mateacademy.tania.lesson22;
 
+import javax.persistence.*;
+import java.io.Serializable;
 import java.math.BigDecimal;
-import java.time.LocalDate;
+import java.util.Date;
 import java.util.Objects;
+;
 
 /**
  * Created by Tania Nebesna on 12.02.2019.
  */
-public class Order {
+
+@Entity
+@Table(name = "ORDERS")
+public class Order implements Serializable {
     private BigDecimal orderNum;
-    private Product string;
-    private LocalDate orderDate;
-    private java.lang.String mfr;
+    private String product;
+    private Date orderDate;
+    private String mfr;
     private BigDecimal qty;
     private BigDecimal amount;
 
     public Order() {
     }
 
-    public Order(BigDecimal orderNum, Product string, LocalDate orderDate, String mfr, BigDecimal qty, BigDecimal amount) {
+    public Order(BigDecimal orderNum, String product, Date orderDate, String mfr, BigDecimal qty, BigDecimal amount) {
         this.orderNum = orderNum;
-        this.string = string;
+        this.product = product;
         this.orderDate = orderDate;
         this.mfr = mfr;
         this.qty = qty;
         this.amount = amount;
     }
 
+    @Id
+    @Column(name = "order_num", nullable = false, unique = true, precision = 22)
     public BigDecimal getOrderNum() {
         return this.orderNum;
     }
@@ -34,27 +42,36 @@ public class Order {
     public void setOrderNum(BigDecimal orderNum) {
         this.orderNum = orderNum;
     }
-    public Product getString() {
-        return this.string;
+
+    @Column(name = "product")
+    public String getProduct() {
+        return this.product;
     }
 
-    public void setString(Product string) {
-        this.string = string;
+    public void setProduct(String product) {
+        this.product = product;
     }
-    public LocalDate getOrderDate() {
+
+    @Temporal(TemporalType.DATE)
+    @Column(name = "ORDER_DATE", length = 7)
+    public Date getOrderDate() {
         return this.orderDate;
     }
 
-    public void setOrderDate(LocalDate orderDate) {
+    public void setOrderDate(Date orderDate) {
         this.orderDate = orderDate;
     }
+
+    @Column(name = "MFR", length = 3)
     public String getMfr() {
         return this.mfr;
     }
 
-    public void setMfr(java.lang.String mfr) {
+    public void setMfr(String mfr) {
         this.mfr = mfr;
     }
+
+    @Column(name = "QTY", precision = 22)
     public BigDecimal getQty() {
         return this.qty;
     }
@@ -62,6 +79,8 @@ public class Order {
     public void setQty(BigDecimal qty) {
         this.qty = qty;
     }
+
+    @Column(name = "AMOUNT", precision = 22)
     public BigDecimal getAmount() {
         return this.amount;
     }
@@ -70,12 +89,12 @@ public class Order {
         this.amount = amount;
     }
 
-    public java.lang.String toString() {
+    public String toString() {
         StringBuffer buffer = new StringBuffer();
 
         buffer.append(getClass().getName()).append("@").append(Integer.toHexString(hashCode())).append(" [");
         buffer.append("orderNum").append("='").append(getOrderNum()).append("' ");
-        buffer.append("string").append("='").append(getString()).append("' ");
+        buffer.append("product").append("='").append(getProduct()).append("' ");
         buffer.append("orderDate").append("='").append(getOrderDate()).append("' ");
         buffer.append("mfr").append("='").append(getMfr()).append("' ");
         buffer.append("qty").append("='").append(getQty()).append("' ");
@@ -91,7 +110,7 @@ public class Order {
         if (o == null || getClass() != o.getClass()) return false;
         Order order = (Order) o;
         return Objects.equals(orderNum, order.orderNum) &&
-                Objects.equals(string, order.string) &&
+                Objects.equals(product, order.product) &&
                 Objects.equals(orderDate, order.orderDate) &&
                 Objects.equals(mfr, order.mfr) &&
                 Objects.equals(qty, order.qty) &&
@@ -100,7 +119,6 @@ public class Order {
 
     @Override
     public int hashCode() {
-
-        return Objects.hash(orderNum, string, orderDate, mfr, qty, amount);
+        return Objects.hash(orderNum, product, orderDate, mfr, qty, amount);
     }
 }

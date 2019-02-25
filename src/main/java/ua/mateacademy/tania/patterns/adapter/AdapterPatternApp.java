@@ -7,5 +7,7 @@ public class AdapterPatternApp {
     public static void main(String[] args) {
         DVIConnector dviConnector = new DVIConnectorAdapterToSVGA();
         dviConnector.connectDVI(); // output: Connect to SVGA
+        SVGAConnector svgaConnector = new DVIConnectorAdapterToSVGA();
+        dviConnector.connectDVI();
     }
 }

@@ -83,3 +83,75 @@ INFO  | 2019-01-23 17:25:05 | [main] logger.Calculator	(Calculator.java:22) -- M
 2019-01-23 22:58:10 | DEBUG | [main] logger.Calculator:16 -- input values a=3, b=0
 2019-01-23 22:58:10 | ERROR | [main] logger.Calculator:20 -- Exception when div working / by zero
 2019-01-23 22:58:10 | INFO  | [main] logger.Calculator:22 -- Method div return -666
+2019-02-21 22:07:39 | DEBUG | [main] lesson22.OrderDaoImpl:40 -- persisting Orders instance
+2019-02-21 22:07:41 | DEBUG | [main] lesson22.OrderDaoImpl:45 -- persist successful
+2019-02-25 14:05:34 | DEBUG | [main] lesson22.OrderDaoImpl:78 -- removing Orders instance
+2019-02-25 14:05:35 | DEBUG | [main] lesson22.OrderDaoImpl:83 -- remove successful
+2019-02-25 14:06:08 | DEBUG | [main] lesson22.OrderDaoImpl:78 -- removing Orders instance
+2019-02-25 14:06:09 | ERROR | [main] lesson22.OrderDaoImpl:90 -- remove failed
+java.lang.IllegalArgumentException: Object: null is not a known Entity type.
+	at org.eclipse.persistence.internal.jpa.EntityManagerImpl.remove(EntityManagerImpl.java:659) ~[eclipselink-2.7.0.jar:2.7.0.v20170811-d680af5]
+	at ua.mateacademy.tania.lesson22.OrderDaoImpl.deleteOrder(OrderDaoImpl.java:81) [classes/:?]
+	at ua.mateacademy.tania.lesson22.OrderDaoImplTest.test1DeleteOrder(OrderDaoImplTest.java:36) [test-classes/:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_192]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_192]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_192]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_192]
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50) [junit-4.12.jar:4.12]
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12) [junit-4.12.jar:4.12]
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47) [junit-4.12.jar:4.12]
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325) [junit-4.12.jar:4.12]
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78) [junit-4.12.jar:4.12]
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363) [junit-4.12.jar:4.12]
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:137) [junit-4.12.jar:4.12]
+	at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:68) [junit-rt.jar:?]
+	at com.intellij.rt.execution.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:47) [junit-rt.jar:?]
+	at com.intellij.rt.execution.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:242) [junit-rt.jar:?]
+	at com.intellij.rt.execution.junit.JUnitStarter.main(JUnitStarter.java:70) [junit-rt.jar:?]
+2019-02-25 14:06:09 | DEBUG | [main] lesson22.OrderDaoImpl:40 -- persisting Orders instance
+2019-02-25 14:06:10 | DEBUG | [main] lesson22.OrderDaoImpl:45 -- persist successful
+2019-02-25 14:06:10 | DEBUG | [main] lesson22.OrderDaoImpl:59 -- merging Orders instance
+2019-02-25 14:06:10 | DEBUG | [main] lesson22.OrderDaoImpl:64 -- merge successful
+2019-02-25 14:07:27 | DEBUG | [main] lesson22.OrderDaoImpl:78 -- removing Orders instance
+2019-02-25 14:07:28 | DEBUG | [main] lesson22.OrderDaoImpl:83 -- remove successful
+2019-02-25 14:08:02 | DEBUG | [main] lesson22.OrderDaoImpl:78 -- removing Orders instance
+2019-02-25 14:08:02 | ERROR | [main] lesson22.OrderDaoImpl:90 -- remove failed
+java.lang.IllegalArgumentException: Object: null is not a known Entity type.
+	at org.eclipse.persistence.internal.jpa.EntityManagerImpl.remove(EntityManagerImpl.java:659) ~[eclipselink-2.7.0.jar:2.7.0.v20170811-d680af5]
+	at ua.mateacademy.tania.lesson22.OrderDaoImpl.deleteOrder(OrderDaoImpl.java:81) [classes/:?]
+	at ua.mateacademy.tania.lesson22.OrderDaoImplTest.test3DeleteOrder(OrderDaoImplTest.java:36) [test-classes/:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_192]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_192]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_192]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_192]
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50) [junit-4.12.jar:4.12]
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12) [junit-4.12.jar:4.12]
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47) [junit-4.12.jar:4.12]
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325) [junit-4.12.jar:4.12]
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78) [junit-4.12.jar:4.12]
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363) [junit-4.12.jar:4.12]
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:137) [junit-4.12.jar:4.12]
+	at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:68) [junit-rt.jar:?]
+	at com.intellij.rt.execution.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:47) [junit-rt.jar:?]
+	at com.intellij.rt.execution.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:242) [junit-rt.jar:?]
+	at com.intellij.rt.execution.junit.JUnitStarter.main(JUnitStarter.java:70) [junit-rt.jar:?]
+2019-02-25 14:08:24 | DEBUG | [main] lesson22.OrderDaoImpl:40 -- persisting Orders instance
+2019-02-25 14:08:25 | DEBUG | [main] lesson22.OrderDaoImpl:45 -- persist successful
+2019-02-25 14:08:25 | DEBUG | [main] lesson22.OrderDaoImpl:59 -- merging Orders instance
+2019-02-25 14:08:25 | DEBUG | [main] lesson22.OrderDaoImpl:64 -- merge successful
+2019-02-25 14:08:25 | DEBUG | [main] lesson22.OrderDaoImpl:78 -- removing Orders instance
+2019-02-25 14:08:25 | DEBUG | [main] lesson22.OrderDaoImpl:83 -- remove successful
