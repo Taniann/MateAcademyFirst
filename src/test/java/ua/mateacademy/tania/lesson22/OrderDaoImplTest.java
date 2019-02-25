@@ -24,4 +24,15 @@ public class OrderDaoImplTest {
     public void test1InsertOrder() throws SQLException {
        assertTrue(orderDao.insertOrder(ORDER));
     }
+
+    @Test
+    public void test2UpdateOrder() throws SQLException {
+        ORDER.setAmount(new BigDecimal(1220));
+        assertTrue(orderDao.updateOrder(ORDER));
+    }
+
+    @Test
+    public void test3DeleteOrder() throws SQLException {
+        assertTrue(orderDao.deleteOrder(ORDER.getOrderNum()));
+    }
 }
