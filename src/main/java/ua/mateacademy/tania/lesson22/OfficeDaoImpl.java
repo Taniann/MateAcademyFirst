@@ -8,9 +8,8 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import java.math.BigDecimal;
 import java.util.Locale;
-import java.util.Set;
 
-public class OrderDaoImpl implements OrderDao {
+public class OfficeDaoImpl implements OfficeDao {
     private static EntityManagerFactory factory;
 
     static {
@@ -21,23 +20,12 @@ public class OrderDaoImpl implements OrderDao {
     private static final Logger LOG = LogManager.getLogger(OrderDaoImpl.class);
 
     private EntityManager entityManager = factory.createEntityManager();
-
     @Override
-    public Set<Order> getAllOrders(){
-        return null;
-    }
-
-    @Override
-    public Order findOrderById(BigDecimal id) {
-        return null;
-    }
-
-    @Override
-    public boolean insertOrder(Order order) {
+    public boolean insert(Office office) {
         LOG.debug("persisting Orders instance");
         try {
             entityManager.getTransaction().begin();
-            entityManager.persist(order);
+            entityManager.persist(office);
             entityManager.getTransaction().commit();
             LOG.debug("persist successful");
             return true;
@@ -52,11 +40,11 @@ public class OrderDaoImpl implements OrderDao {
     }
 
     @Override
-    public boolean updateOrder(Order order) {
+    public boolean update(Office office) {
         LOG.debug("merging Orders instance");
         try {
             entityManager.getTransaction().begin();
-            entityManager.merge(order);
+            entityManager.merge(office);
             entityManager.getTransaction().commit();
             LOG.debug("merge successful");
             return true;
@@ -71,11 +59,11 @@ public class OrderDaoImpl implements OrderDao {
     }
 
     @Override
-    public boolean deleteOrder(BigDecimal id) {
+    public boolean delete(BigDecimal id) {
         LOG.debug("removing Orders instance");
         try {
             entityManager.getTransaction().begin();
-            entityManager.remove(entityManager.find(Order.class, id));
+            entityManager.remove(entityManager.find(Office.class, id));
             entityManager.getTransaction().commit();
             LOG.debug("remove successful");
             return true;
