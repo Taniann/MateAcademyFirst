@@ -7,7 +7,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import java.math.BigDecimal;
-import java.sql.SQLException;
 import java.util.Locale;
 import java.util.Set;
 
@@ -24,17 +23,17 @@ public class OrderDaoImpl implements OrderDao {
     private EntityManager entityManager = factory.createEntityManager();
 
     @Override
-    public Set<Order> getAllOrders() throws SQLException {
+    public Set<Order> getAllOrders(){
         return null;
     }
 
     @Override
-    public Order findOrderById(BigDecimal id) throws SQLException {
+    public Order findOrderById(BigDecimal id) {
         return null;
     }
 
     @Override
-    public boolean insertOrder(Order order) throws SQLException {
+    public boolean insertOrder(Order order) {
         LOG.debug("persisting Orders instance");
         try {
             entityManager.getTransaction().begin();
@@ -53,7 +52,7 @@ public class OrderDaoImpl implements OrderDao {
     }
 
     @Override
-    public boolean updateOrder(Order order) throws SQLException {
+    public boolean updateOrder(Order order) {
         LOG.debug("merging Orders instance");
         try {
             entityManager.getTransaction().begin();
@@ -72,7 +71,7 @@ public class OrderDaoImpl implements OrderDao {
     }
 
     @Override
-    public boolean deleteOrder(BigDecimal id) throws SQLException {
+    public boolean deleteOrder(BigDecimal id) {
         LOG.debug("removing Orders instance");
         try {
             entityManager.getTransaction().begin();

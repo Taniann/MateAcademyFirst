@@ -7,7 +7,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import java.math.BigDecimal;
-import java.sql.SQLException;
 import java.util.Locale;
 
 public class OfficeDaoImpl implements OfficeDao {
@@ -22,7 +21,7 @@ public class OfficeDaoImpl implements OfficeDao {
 
     private EntityManager entityManager = factory.createEntityManager();
     @Override
-    public boolean insert(Office office) throws SQLException {
+    public boolean insert(Office office) {
         LOG.debug("persisting Orders instance");
         try {
             entityManager.getTransaction().begin();
@@ -41,7 +40,7 @@ public class OfficeDaoImpl implements OfficeDao {
     }
 
     @Override
-    public boolean update(Office office) throws SQLException {
+    public boolean update(Office office) {
         LOG.debug("merging Orders instance");
         try {
             entityManager.getTransaction().begin();
@@ -60,7 +59,7 @@ public class OfficeDaoImpl implements OfficeDao {
     }
 
     @Override
-    public boolean delete(BigDecimal id) throws SQLException {
+    public boolean delete(BigDecimal id) {
         LOG.debug("removing Orders instance");
         try {
             entityManager.getTransaction().begin();

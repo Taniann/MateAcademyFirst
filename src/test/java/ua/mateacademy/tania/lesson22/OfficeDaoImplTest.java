@@ -5,7 +5,6 @@ import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
 import java.math.BigDecimal;
-import java.sql.SQLException;
 
 import static org.junit.Assert.assertTrue;
 
@@ -16,18 +15,18 @@ public class OfficeDaoImplTest {
     private OfficeDao officeDao = new OfficeDaoImpl();
 
     @Test
-    public void test1Insert() throws SQLException {
+    public void test1Insert() {
         assertTrue(officeDao.insert(office));
     }
 
     @Test
-    public void test2Update() throws SQLException{
+    public void test2Update() {
         office.setSales(BigDecimal.valueOf(2000));
         assertTrue(officeDao.update(office));
     }
 
     @Test
-    public void test3Delete() throws SQLException {
+    public void test3Delete() {
         assertTrue(officeDao.delete(office.getOffice()));
     }
 }
