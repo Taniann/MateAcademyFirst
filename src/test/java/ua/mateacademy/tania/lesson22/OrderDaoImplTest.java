@@ -12,12 +12,23 @@ import static org.junit.Assert.*;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class OrderDaoImplTest {
-    private static final Order ORDER = new Order(BigDecimal.valueOf(121212), null,
+/*    private static final Order ORDER = new Order(BigDecimal.valueOf(121212), null,
             new Date(), "101", BigDecimal.valueOf(121),
-            BigDecimal.valueOf(1214));
+            BigDecimal.valueOf(1214));*/
     private OrderDao orderDao = new OrderDaoImpl();
 
     @Test
+    public void testFindAllOrders() {
+        System.out.println(orderDao.getAllOrders());
+    }
+
+    @Test
+    public void testFindOrderById() {
+        Order order = orderDao.findOrderById(BigDecimal.valueOf(112961));
+        System.out.println(order);
+    }
+
+/*    @Test
     public void test1InsertOrder() {
        assertTrue(orderDao.insertOrder(ORDER));
     }
@@ -30,6 +41,6 @@ public class OrderDaoImplTest {
 
     @Test
     public void test3DeleteOrder() {
-        assertTrue(orderDao.deleteOrder(ORDER.getOrderNum()));
-    }
+        assertTrue(orderDao.deleteOrder(new BigDecimal(121212)));
+    }*/
 }

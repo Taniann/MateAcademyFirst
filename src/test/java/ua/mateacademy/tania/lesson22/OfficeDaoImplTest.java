@@ -10,8 +10,8 @@ import static org.junit.Assert.assertTrue;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class OfficeDaoImplTest {
-    private static final Office office = new Office(BigDecimal.valueOf(25), "киев", "region",
-             BigDecimal.valueOf(500), BigDecimal.valueOf(1000));
+    private static final Office office = new Office(BigDecimal.valueOf(25), null, "киев", "region",
+             BigDecimal.valueOf(500), BigDecimal.valueOf(1000), null);
     private OfficeDao officeDao = new OfficeDaoImpl();
 
     @Test

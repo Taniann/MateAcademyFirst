@@ -1,30 +1,41 @@
 package ua.mateacademy.tania.lesson22;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.math.BigDecimal;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "OFFICES")
 public class Office implements java.io.Serializable {
 
     private BigDecimal office;
+    private Salesrep salesrep;
     private String city;
     private String region;
     private BigDecimal target;
     private BigDecimal sales;
+    private Set<Salesrep> salesreps = new HashSet<>();
 
     public Office() {
     }
 
-    public Office(BigDecimal office, String city, String region, BigDecimal target, BigDecimal sales) {
+    public Office(BigDecimal office, String city, String region, BigDecimal sales) {
         this.office = office;
+        this.city = city;
+        this.region = region;
+        this.sales = sales;
+    }
+
+    public Office(BigDecimal office, Salesrep salesrep, String city, String region, BigDecimal target,
+                   BigDecimal sales, Set<Salesrep> salesreps) {
+        this.office = office;
+        this.salesrep = salesrep;
         this.city = city;
         this.region = region;
         this.target = target;
         this.sales = sales;
+        this.salesreps = salesreps;
     }
 
     @Id
@@ -36,6 +47,7 @@ public class Office implements java.io.Serializable {
     public void setOffice(BigDecimal office) {
         this.office = office;
     }
+
 
     @Column(name = "CITY", nullable = false, length = 40)
     public String getCity() {
@@ -73,4 +85,12 @@ public class Office implements java.io.Serializable {
         this.sales = sales;
     }
 
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "office")
+    public Set<Salesrep> getSalesreps() {
+        return this.salesreps;
+    }
+
+    public void setSalesreps(Set<Salesrep> salesreps) {
+        this.salesreps = salesreps;
+    }
 }
