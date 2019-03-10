@@ -86,8 +86,12 @@ public class OrderDaoImpl implements OrderDao {
                 sessionObj.getTransaction().rollback();
             }
             sqlException.printStackTrace();
+        } finally {
+            if (sessionObj != null) {
+                sessionObj.close();
+            }
+            return order;
         }
-        return order;
     }
 
     @Override
