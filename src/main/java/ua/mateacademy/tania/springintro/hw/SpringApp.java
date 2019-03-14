@@ -10,20 +10,16 @@ import ua.mateacademy.tania.springintro.hw.entity.*;
 public class SpringApp {
     public static void main(String[] args) {
         ConfigurableApplicationContext context = new AnnotationConfigApplicationContext(
-                "ua.mateacademy.tania.springintro.hw.entity");
+                "ua.mateacademy.tania.springintro.hw");
 
-        Rose rose = context.getBean(Rose.class);
-        System.out.println(rose);
-
-        Flower poland = context.getBean("gerbera", Flower.class);
-        System.out.println(poland);
-
-        Chrysanthemum chrysanthemum = context.getBean("chrysanthemum", Chrysanthemum.class);
-        System.out.println(chrysanthemum);
-
-        Lily lily = (Lily) context.getBean("lily");
-        lily.setColor("white");
+        Lily lily = context.getBean(Lily.class);
         System.out.println(lily);
+
+        Rose rose1 = context.getBean(Rose.class);
+        System.out.println(rose1);
+
+        Rose rose2 = context.getBean(Rose.class);
+        System.out.println(rose2);
 
         Violet violet = context.getBean(Violet.class);
         System.out.println(violet);
